@@ -1,0 +1,6 @@
+/* CSS バージョン３ */
+/* 近年CSSではclass属性を使用、id属性はJSで使用するようになってきている */
+@import url(sanitize.css);
+
+/* カラーネームでの指定　１６色 */
+/* black gray silver white blue navy teal green lime aqua yellow red fuchsia olive purple maroon */
