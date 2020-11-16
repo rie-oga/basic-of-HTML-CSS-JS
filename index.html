@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+
+  <title>bootstrap</title>
+  <!-- bootstrap CDN(Contents Delivery Network) CSS用　-->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <hr><!-- <hr>タグ　区切りを示す空要素 横枠線などを引くのによく使われる　-->
+
+  <!-- bootstrap -->
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2"><!-- col-md-2がcol-md-8の左にできる -->
+  </div>
+
+  <!-- form -->
+  <!-- フォームの内容を送信するには、親要素として<form>要素が必要 -->
+  <!--
+  get方式：URLの一部に入力した内容を足して送信する方法足された部分を「URLパラメータ」と呼ぶ。GoogleやAmazonのキーワード検索がこの方式を採用。利点：URLをコピーすれば検索結果の画面等を簡単に共有できる
+  post方式：URLを変化させることなくフォームの内容を送信。個人情報の送信や、大量のデータを送信する際に利用。method属性を省略した場合、get方式が指定される。
+ 　-->
+  <form action="送信先" method="getまたはpost">
+  </form>
+</body>
+</html>
