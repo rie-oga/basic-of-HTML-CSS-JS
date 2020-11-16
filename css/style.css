@@ -1,38 +1,103 @@
-/* CSS バージョン３ */
-/* 近年CSSではclass属性を使用、id属性はJSで使用するようになってきている */
-@import url(sanitize.css);
+/* [Can I use]使いたいプロパティーがどのWebブラウザに対応しているか調べられるサイト */
 
 
-/* 色　ここから */
+/* list-styleプロパティー */
+list-style: スタイル名　行頭の位置　行頭に指定する画像
+/*
+<スタイル名　代表的なもの>
+・none なし
+・disc　黒丸
+・circle　白丸
+・square　黒四角
+・lower-roman 小文字ローマ字
+・upper-roman 大文字ローマ字
+・lower-greek 小文字ギリシャ文字
+・decimal　算用数字
+・decimal-leading-zero 先頭に０をつけた算用数字
+・lower-latin,lower-alpha 小文字のアルファベット
+・upper-latin,upper-alpha 大文字のアルファベット
+・cjk-ideographic 漢数字
 
-/* １．カラーネームでの指定　１６色 */
-/* black gray silver white blue navy teal green lime aqua yellow red fuchsia olive purple maroon */
+<行頭の位置>
+・inside 行頭の数字の部分を領域の内側に入れる
+・outside 行頭の数字の部分を領域の内側に入れない
 
-/* ２．RGB法 */
-/* プロパティ： rgb(Red, Green, Blue); 0~255の数字か、0~100%　*/
-
-/* ３．16進数法 */
-
-/* ４．rgba(RGB法+透明度) */
-/* プロパティ： rgb(０,０,０, .5); 不透明度50%の黒　0.5でも .5でも可　*/
-
-/* ５．hsl、hsla */
-/* HSL色空間を利用して色を指定　・同系色の色で少し暗めの色・同じ明るさの多色　などが調整しやすい */
-/* プロパティ： hsl(色相, 彩度, 明度);     色相(Hue)　彩度(Saturation)　明度(Lightness) 色相は0~360, 彩度と明度は0~100%　*/
-/* プロパティ： hsla(色相, 彩度, 明度, 透明度); */
-
-
-/* 色　ここまで *
+<行頭に指定する画像>
+画像パスを指定
+*/
 
 
 
-/* 相対単位 ここから*/
-em /* 親要素の文字サイズを1emとした、相対的な大きさ。1.5emは1.5倍の大きさ */
-rem /* 「ルート要素」の文字サイズを1remとした相対的な大きさ　*/
-ex /* 小文字の「ｘ」の高さ。一般的には0.5emになるがフォントによっては異なる */
-ch /* [0]の幅を基準とした大きさ */
-vh /* ビューポートの高さの1/100 */
-vw /* ビューポートの幅の1/100 */
-vmin /* ビューポートの高さまたは幅の小さいほうの1/100 */
-vmax /* ビューポートの高さまたは幅の大きいほうの1/100 */
-/* 相対単位　ここまで */
+/* 日本語のWebフォント */
+/*
+webフォントを使用できるのは主に英文
+近年少しずつ利用しやすくなっている
+↓（無料）日本語データの提供
+Google Fonts + 日本語早期アクセス
+*/
+
+
+
+/* RWD(レスポンシブ　ウェブ　デザイン) */
+@media only screen and (条件) and (条件) {
+}
+/*
+すべてに条件分岐でメディアクエリーをかけてしまうと、閲覧者のブラウザが古い時にCSSが一切効かなくなる。
+それなので、一部CSSを上書きする形で記載したほうが良い
+*/
+
+
+
+
+/* 疑似クラスセレクター */
+
+:active  /* タブキーなどでフォーカスを当てた時やタップをしてから離すまで */
+:checked　/* チェックボックスでチェックされているものを指定 */
+:disabled　/* disabled属性が有効になっている要素を指定 */
+:empty　/* 空の要素を指定 */
+:enabed　/* disabled属性が有効になっていない要素を指定 */
+:first-child　/* 最初の子要素を指定 */
+:fist-of-type　/* 指定した要素のうち、子要素として最初に出現する要素を指定 */
+:focus　/* フォームコントロールなどで、フォーカスがあたった状態 */
+:hover　/* マウスホバーしている状態 */
+:lang()　/* 言語を指定　日本語はja */
+:last-child /* 最期の子要素を指定 */
+:last-of-type　/* 指定した要素のうち、子要素として最後に出現する要素を指定 */
+:link　/* 訪れたことのないリンクを指定 */
+:nth-child()
+:nth-of-type()　/* 上に同じ */
+:nth-last-child()
+:nth-last-of-type()
+:only-child　/* 親要素の中に、一つしかない要素を指定 */
+:only-of-type()　/* 上に同じ */
+:root　/* 文書のルートを指定する　HTML文書の場合は<html>要素 */
+:target　/* ページ内リンクでリンクされている要素を指定 */
+:visited　/* すでに訪れたリンク先を指定 */
+
+
+
+
+/* CSSアニメーションを付ける トランザクション　*/
+.description img {
+  transition-property: opacity;
+  transition-duration: 1s;
+  transition-timing-function: ease;
+  transition-delay: 0s;
+}
+/* またはまとめて↓ */
+.description img {
+  transition: opacity 1s ease 0s;
+}
+/*
+transition-property: 対象となるCSSプロパティーを指定。opacityを指定すると、不透明度が変わった時にトランジションが発動。対象を絞らないときは「all」を指定できる。
+transition-duration: トランジションにかける時間を設定。「s」や「ms（ミリ秒）」
+transition-timing-function: トランジションの処理を指定。初期値はease。値↓
+                            ease: 開始と終了を滑らかにする。自然なトランジションになる。
+                            linear: 常に一定の速度にする
+                            ease-in: 開始時だけなめらかにする
+                            ease-out: 終了時をなめらかにする
+                            ease-in-out: ease-in,ease-outを同時に行う（easeより若干遅くなる）
+                            cubic-bezier(x1, y1, x2, y2): 3次ベジェ曲線を指定できる
+transition-delay: トランジションの開始を、指定した秒数だけ遅らせる
+*/
+
