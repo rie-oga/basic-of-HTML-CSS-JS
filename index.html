@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
 
-  <title>bootstrap</title>
+  <title>bootstrap/form</title>
   <!-- bootstrap CDN(Contents Delivery Network) CSS用　-->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
@@ -24,6 +24,117 @@
   post方式：URLを変化させることなくフォームの内容を送信。個人情報の送信や、大量のデータを送信する際に利用。method属性を省略した場合、get方式が指定される。
  　-->
   <form action="送信先" method="getまたはpost">
+
+
+
+
+    <label for="name">お名前</label>
+    <input type="入力タイプ" name="フォーム名">
+    <!--
+    [入力タイプ]には、入力する内容に従って次のどれかから選ぶ。
+    ・text　一般的。ブラウザによってはtype属性の挙動に対応していないものもある。その場合は、「text」をしたのと同じ属性になる
+    ・password　入力した内容が隠れる
+    ・email
+    ・url
+    ・file　ユーザーの環境上のファイルを指定できる
+    ・tel
+    ・number　数字のみのキーボードが表示される
+    ・date　日付。（その他、datetime,datetime-local,month,time,weekがある）
+    ・search　検索キーワード
+
+    「name」属性：フォーム送信したときにサーバーサイドプログラムに渡される値の「名前」を指定
+    -->
+
+
+
+
+
+    <!-- ドロップダウンリスト　<select>と<option> -->
+    <div class="form-group">
+      <label for="job">ご職業</label>
+      <select id="job" name="job" class="form-control"><!-- selectとoptionは必ず親子で使われる -->
+        <option value="">選択してください</option>
+        <option value="1">会社員</option><!-- <option value="値">表示ラベル</option> 　ユーザーに表示されるのは「表示ラベル」、フォームに送られるのは「値」 -->
+        <option value="2">学生</option>
+        <option value="3">その他</option>
+      </select>
+      <!-- ドロップダウンリストを作るときは、先頭に空のoption要素を追加するのが一般的。それにより、ユーザーが選択していないという状態を分かりやすくする。 -->
+    </div>
+
+    <!-- 上のものにsize属性をつけると、選択肢が初めから数字分表示され、一覧性がよくなる -->
+    <select id="job" name="job" class="form-control" size="3">
+
+
+
+
+    <!-- 複数選択可のチェックボックス <input type="checkbox" name="パーツ名" value="送信する値">-->
+    <!--
+    チェックボックスを単体で使うとチェックする四角いボックスのみになってしまうため、その前後に必ず「ラベル」を付与
+    またbootstrapの決まりとして、ラベルを含め<label>で囲むこと、その上から<div class="checkbox">で囲むこと
+    -->
+    <div class="form-group">
+      <label>知りたい内容（複数選択可）</label>
+      <div class="checkbox">
+        <label><!-- label class="checkbox-inline"とすると、bootstrapなら横に並べたときのスタイルが整う -->
+          <input type="checkbox" name="q1" value="html"><!-- name属性は普通重複しないようにするが、複数チェック可のときは、同じnameにすることで、送信時に内容がまとめて送られる。 -->
+          HTML
+        </label>
+      </div>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" name="q1" value="css">
+          CSS
+        </label>
+      </div>
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" name="q1" value="javascript">
+          Javascript
+        </label><!-- label要素はフォーカスがあたるという役割も -->
+      </div>
+    </div>
+
+
+
+
+    <!-- ラジオボタン（チェックボックスと同じような入力ボックスで、１つしか選択できないもの）type属性がradioになっているくらいで、チェックボックスとほぼ同じ -->
+    <div class="firm-group">
+      <label>理解度はいかがですか？</label>
+      <div>
+        <label class="radio-inline"><!-- radio-inline:bootstrapなら横に並べたときのスタイルが整う --><!-- RWDのときは、.radio-inlineをdisplay:block;にすると簡単に縦並びに。 -->
+          <input type="radio" name="q2" id="q2_1" value="1">理解できなかった
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="q2" id="q2_2" value="2">だいたい理解できた
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="q2" id="q2_3" value="3">理解できた
+        </label>
+        <label class="radio-inline">
+          <input type="radio" name="q2" id="q2_4" value="4">回答しない
+        </label>
+      </div>
+    </div>
+
+
+
+
+    <!-- フォームパーツのデフォルト値の設定の仕方 -->
+    <!-- テキストフィールドの場合 -->
+    <input type="text" name="sample" value="初期値"><!-- value属性を使う -->
+
+    <!-- ドロップダウンリストの場合 -->
+    <select name="sample">
+      <option value="">選択してください</option>
+      <option value="1" selected>1つめ</option><!-- selected属性を使う -->
+      <option value="2">2つめ</option>
+    </select>
+
+    <!-- チェックボックス・ラジオボタンの場合 -->
+    <checkbox name="sample" value="" checked><!-- checked属性を使う -->
+
+    <!-- テキストエリアの場合 -->
+    <textarea name="sample">初期値</textarea>
   </form>
 </body>
 </html>

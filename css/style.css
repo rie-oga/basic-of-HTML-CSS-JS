@@ -1,7 +1,12 @@
 /* CSS3 */
 
-hr {
+hr {/* 区切り線 */
   border-width: 3px;/* 太さ */
   border-color: #000;
   margin: 30px 0;
 }
+
+
+/* !importantによる優先順位の変更 */
+margin: 0 !important;
+/* CSSには優先順位がある。そのためCSSが効かないことも。その時は!importantを使うと、もっとも優先順位が高くなる */
