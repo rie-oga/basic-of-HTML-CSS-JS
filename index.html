@@ -1,1 +1,73 @@
-hoge
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>TODAY</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>TODAY</h1>
+  </header>
+
+  <div class="container">
+    <script type="text/javascript" language="javascript">//HTML5以降は、type属性とlanguage属性は省略できる
+
+
+      //オブジェクト.メソッド(パラメータ、パラメータ２、...)
+      document.write('<p class="date">2020/11/19</p>');
+      /*
+      オブジェクト：webブラウザ内に表示されている文章、つまり今表示している文章自体
+      メソッド：命令　writeは画面に表示するというメソッド
+      パラメータ：なにを。メソッドによって、必ず指定しなければならないパラメータと、省略可能なものがある
+      */
+
+
+
+      //計算
+      document.write('10+3'); //結果：10+３
+      document.write(10+3); //結果：13
+      document.write(10+3*2/10); //結果：10.6
+      document.write((10+3)*2/10); //結果：2.6
+
+      //パラメータは''でも""でも同じ。ただ、クオーテーション記号の中に同じクオーテーション記号は使えない　【ok: '今日は、"2020/11/18"です'】
+
+
+      //10+3の結果は、13です。←13の部分だけを計算するには
+      document.write('10+3の結果は' +（10+3) + 'です'); //結果：10+3の結果は13です
+  　　document.write('10+3の結果は' + 10+3 'です'); //結果：10+3の結果は103です
+
+
+      //計算結果を保持しておく　変数  ↑みたいに+や（）が入り乱れると見にくい
+      var answer = 10+3; //varはvariable(可変)という意味。 var 変数名 = 最初の内容;
+      document.write('10+3の結果は、' + answer + 'です');
+      answer = 10-3; //変数は上書き可能
+      document.write('<br>10-3=' + answer);
+
+
+      //日付を扱う　Dateオブジェクト
+      var today = new Date(); /* newという記述がある場合は、普通の代入と違う。
+      Dateオブジェクトのインスタンス変数を作る、という作業をしている。なぜならDateオブジェクトはそのままでは利用できず、インスタンスにしなければならないから。インスタンスは実体という意味。
+      ここでは、Dateオブジェクトの役割を持った、今現在の日時を持った実体を作る。その実体にtodayという名前を付けている。
+      */
+      document.write('<p>今日は' + today.getDate() + '日です</p>');// 今日の日付を取得するgetDateメソッド
+
+      var today = new Date();
+      var newYear = new Date(2020, 1, 1);
+      document.write('<p>今日は' + today.getDate() + '日です</p>');//結果：今日は～日（その日の日付）です
+      document.write('<p>元旦は' + newYear.getDate() + '日です</p>');//結果：元旦は1日です
+
+      //インスタンス変数を作ったり作らなかったり、扱いはオブジェクトによる
+
+
+
+      //日付を表示するプログラム　このサイトを表示した瞬間のもの
+      var today = new Date();
+      var todayHtml = today.getFullYear() + '/' + (today.getMonth()+1) + '/' + today.getDate();
+      document.write('<p class="date">' + todayHtml + '</p>');
+      //Date.getFullYear(年を4桁で取得する) Date.getMonth(月を取得、ただし取得する数字は０から始まってしまうため、目的の数字にするには1を加える) Date.getDate(日付を取得)
+
+    </script>
+  </div>
+</body>
+</html>
