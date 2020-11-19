@@ -1,41 +1,25 @@
 <!-- html 5.1 -->
-<!DOCTYPE html><!-- HTML5以降の書き方　HTMLと数字の間に半角スペースが開いて入れば数字はバージョン -->
-<html><!-- 決まり文句 -->
+<!DOCTYPE html>
+<html lang="ja">
 <head>
-  <meta charset="UTF-8"><!-- 文字コード　ユニコードの一つ（世界中の言語を網羅した文字コード）　日本語の文字化けを防ぐ -->
-  <meta name="viewport" content="width=device-width"><!--
-  ビューポート＝各ディバイスに表示させる領域のこと　デフォルトで、小型の画面で表示する際は縮小表示させるようになっているが、小型デバイス用の画面を別で用意することが多くなってきている。縮小表示の必要がない時は、　【幅＝デバイスの画面幅】　という設定を行う
-  -->
-  <title>chapter2</title>
-  <link rel="stylesheet" href="css/sanitize.css"><!-- 余計な装飾を取り除いてくれる　外部ファイルをダウンロードしてくる必要がある -->
-  <!--
-  ここに書くか、もしくはstyle.cssの先頭に@import url(sanitize.css);ここに書くと、先に読んだsanitizeに依存する形でstyleを決めていく形になるため、cssファイルに書く方が好ましい
-  -->
-
-  <!-- CSSの書き方３　これで、どうしても思うように動かない時に、1や2を使用する -->
-  <link rel="stylesheet" href="style.css"><!-- link要素：外部ファイル参照時に使用　CSSファイルを参照する際はstylesheetと記述 -->
-  <!-- ファイルが格納されている階層によって、href="css/style.css"やhref="../<input type="color" name="" value="" placeholder="">css/style.cssと記述" -->
-
-  <meta name="description" content="~"><!-- webページがヒットしたとき、この文章がタイトル下に表示されることがある。ページ内の文章が表示されることもある -->
-
-  <!-- ↓　OGP(Open Graph Protocol) FacebookなどのソーシャルメディアでWebページがシェアされたときに、画像とタイトルなどを表示させるための指定 -->
-  <meta property="og:locale" content="ja_JP" /><!-- 言語。日本語サイトならjs_JPを指定 -->
-  <meta property="og:type" content="website" /><!-- webページの種類　website:webサイトトップページ　artical:webサイト記事ページ　等 -->
-  <meta property="og:title" content="" /><!-- <title>要素と同じで可 -->
-  <meta property="og:description" content="" /><!-- <meta name="description"と同じで可> -->
-  <meta property="og:url" content="https://~" /><!-- ページのURL -->
-  <meta property="og:site_name" content="" /><!-- サイト名 -->
-  <meta property="og:image" content="https://~" /><!-- サムネイル画像 -->
-
-  <!-- CSSの書き方２　内部参照 headの一番下に-->
-  <style>
-    h1 {
-      font-size: 14px;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <title>chapter6</title>
 </head>
 <body>
-  <!-- CSSの書き方１ インライン-->
-  <h1 style="font-size: 24px; margin: 50px;">入会申し込み</h1>
+  <div class="container">
+    <p id="timer">00:00:00</p>
+      <!--
+       ↓　時刻表示の内容を書き換えていくには、、　DOMを使う
+       DOMとは,HTMLの要素をプログラムの対象（＝オブジェクト）として扱うための手段で、APIと呼ばれるものの一種
+       ここではdocument.getElementByIdメソッドを使う
+       documnet.writeを使うときは、<script>はbody要素の一番下か、head要素に記述
+      -->
+    <div>
+      <button id="start_stop" class="btn btn-lg btn-primary">START</button>
+    </div>
+  </div>
+  <script>
+    document.getElementById('timer').innerHTML = '00:01:00';//→表示は00:01:00になる
+  </script>
 </body>
 </html>
