@@ -27,4 +27,4 @@ var images = [
     "caption": "空と大地の境界線って、どのあたり？"
   }
 ];
-alert
+alert(images[0].caption)
