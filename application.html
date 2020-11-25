@@ -11,10 +11,20 @@
   <h1>My Photos</h1>
  </header>
  <div class="container">
-  <div id="img_unit">
+  <div id="vue_unit">
+    {{ message }}<!-- {{プレースホルダー：Vue.jsはこの記述に対して働きかける}} -->
+  </div>
+  <div class="vue_unit2">
+    <div class="photo" v-for="Photo in Photos"><!-- v-for:繰り返し　v-for="変数名 in 配列名" -->
+      <img :src="Photo.path"><!-- Vue.jsを使った属性でのプレースフォルダの記述→　：属性名="プレースフォルダのキー" -->
+      <div class="inner"><p>{{Photo.caption}}<span>{{Photo.name}}</span></p></div>
+    </div>
   </div>
 </div>
+<!-- jQueryダウンロード -->
 <script src="js/jquery.min.js"></script>
+<!-- Vue.js CDN -->
+<script src="https://unqkg.com/vue/dist/vue.js"></script>
 <script type="text/javascript" src="index.js"></script>
 </body>
 </html>
