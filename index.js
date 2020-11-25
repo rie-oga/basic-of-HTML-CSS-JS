@@ -1,30 +1,21 @@
-/*
-jQueryの基本：＄(セレクタ).メソッド(パラメータ);
-$から始まるのがｊQueryの特徴的書式
-$=jQuery ほとんどの場合＄でokだが、他ライブラリーで＄という記号がすでに使われていると複数のライブラリーで機能がぶつかってしまう。その際は、プログラムの先頭でjQuery.noConflict();と記述することで、他ライブラリーとのコンフリクトを回避
-*/
-
-$('#img_unit').html('ここに、画像リストが表示されます');
-$('#img_unit').css('margin-top', '100px');//←ｃｓｓを変更
-$('#img_unit').css('marfin-top');//←ｃｓｓを取得
-//↓メソッドチェーン
-$('img_unit').html('ここに、画像リストが表示されます').css('margin-top', '100px');
-
-/*
-alert($('#img_unit').html()); ←html()内を空にすることで、データを取得できる
-*/
-
-
-/*
-Ajax getJSONメソッド
-*/
-$.getJSON('https//:h2o-space.com/htmlbook/images.php'.function(data) {
-  for (var i=0; i<data.length; i++) {
-    $('<div class="photo"></div>')//＄（要素）：新しい要素を作る＝document.createElementメソッド
-    .append('<img src="' + data[i].path + '">')//appendメソッド：要素を追加
-    .append('<div class="inner"><p>' + data[i].caption + '<span>' + data[i].name + '</span></p></div>')
-    .appendTo('#img_unit');//appendToメソッド：実際に表示　A.append(B);=AにBを追加　A.appendTo(B);=BにAを追加
+var app = new Vue({
+  el: '#vue_unit',//el:要素を指定
+  data: {//data:Vue.jsで書き換えるプレースホルダーの内容を指定
+    message: 'Vue.jsで書き換えました'//messageという箇所を～に書き換え
   }
 });
 
-//ｊQteryはwifi環境を使っていないと処理が重くなりがち
+
+//Ajax通信で受信したJSONデータをVue.jsに渡す
+var app = new Vue({
+  el: '#img_unit',
+  data: {
+    Photos: []
+  },
+  created: function() {//インスタンスが作成されるときに実行されるアクションを記述
+    var self = this;　//jQueryとの組み合わせでthisがそのまま使えないため代入。コールバックが呼び出される前に代入することで、値を退避
+    $.getJSON('https://h2o-space.com/htmlbook/images.php', function(data) {
+      self.Photos = data;
+    });
+  }
+});
