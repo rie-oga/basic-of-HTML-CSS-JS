@@ -29,7 +29,7 @@ var images = [
     "caption": "空と大地の境界線って、どのあたり？"
   }
 ];
-alert(images[0].caption)
+//alert(images[0].caption)
 
 /*
 var pref1 = "北海道"
@@ -66,3 +66,70 @@ slice:配列をコピー
 var prefCopy = pref.slice();
 */
 
+var img;
+//document.createElementは、新しく要素を作成するためのメソッド。パラメータに要素名を指定するとElementオブジェクトが作成される
+//document.createElement(作成する要素);
+img = document.createElement('img');//imgという変数に代入
+img.setAttribute('src',images[0].path);//setAttributeメソッドでimgnに対いてsrc属性を追加。src属性の値としてJSONから取得した画像ファイルへのpathを指定すれば、画像要素の完成
+document.getElementById('img_unit').appendChild(img);//document.createElementメソッドでつくった要素をdocument.appendChildメソッドで画面上の要素に追加することで表示できる
+
+
+/*
+<div class="phote">
+  <img src="img/img01.jpg">
+  <div class="inner"><p>こっちは貫禄ありすぎ<span>sansaisan</span></p></div>
+</div>
+以下、ｈｔｍｌのこれをｊｓで作る
+*/
+var img;
+var caption;
+var div;
+
+img = document.createElement('img');
+img.setAttribute('src',images[0].path);
+
+caption = document.createElement('div');
+caption.className = 'inner';
+caption.innerHTML = '<p>' + images[0].caption + '<span>' + images[0].name + '</span></p>';
+
+div = document.createElement('div');
+div.className = 'photo',
+div.appendChild(img);
+div.appendChild(caption);
+
+document.getElementById('img_unit').appendChild(div);
+
+/*
+繰り返し処理を行うfor構文 上の記述に足していく↓
+*/
+var img;
+var caption;
+var div;
+
+for (var i=0; i<images.length; i++) {//ここを追加
+
+img = document.createElement('img');
+img.setAttribute('src',images[i].path);
+
+caption = document.createElement('div');
+caption.className = 'inner';
+caption.innerHTML = '<p>' + images[i].caption + '<span>' + images[i].name + '</span></p>';
+
+div = document.createElement('div');
+div.className = 'photo',
+div.appendChild(img);
+div.appendChild(caption);
+
+document.getElementById('img_unit').appendChild(div);
+}
+/*
+for (初期化処理；　終了条件；　更新処理) {
+  繰り返したい処理
+}
+var i = 0; 変数名はなんでもいいが、iが良く使われる、今回は、最初のデータ（０番目）を初期値とする
+i<images.length ここではiの最大値２、images.lengthの最大値３
+更新処理は、繰り返しのたびに変える内容を指定。今回はiを１ずつ加算したい　表現方法→ i=i+1,i+=1,i++
+*/
+
+
+//for構文を複数使う場合、j,k.lなどと続く
